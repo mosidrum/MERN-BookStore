@@ -6,13 +6,13 @@ import BackButton from '../components/BackButton';
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(false);
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const handleDelete = () => {
     setLoading(true);
     axios
-      .delete(`https://localhost:8888/books/${id}`)
+      .delete(`http://localhost:8888/books/${id}`)
       .then(() => {
         setLoading(false);
         navigate('/');
