@@ -14,7 +14,10 @@ const bookSchema = mongoose.Schema(
       type: Number,
       require: true
     }
+  },
+  {
+    timestamps: true
   }
 );
 
-export const Book = mongoose.model('book', {name: String });
+export const Book = mongoose.model('book', bookSchema);
