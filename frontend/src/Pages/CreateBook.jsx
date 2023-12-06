@@ -20,10 +20,10 @@ const CreateBook = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleCreateBook = () => {
+  const handleCreateBook = (data) => {
     setLoading(true);
     axios
-      .post('http://localhost:8888/books', formData)
+      .post('http://localhost:8888/books', data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book created successfully', { variant: 'success' });
@@ -40,10 +40,9 @@ const CreateBook = () => {
       <BackButton />
       <BookForm
         formData={formData}
-        setFormData={setFormData}
         loading={loading}
         handleInputChange={handleInputChange}
-        handleSubmit={handleCreateBook}
+        handleCreate={handleCreateBook}
         buttonText="Create"
         formTitle="Create book"
       />
