@@ -3,8 +3,8 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
-import BookTable from '../components/home/BookTable';
-import BookCard from '../components/home/BookCard';
+import BookTable from '../components/BookTable';
+import BookCard from '../components/BookCard';
 
 const Home = () => {
 	const [books, setBooks] = useState([]);
