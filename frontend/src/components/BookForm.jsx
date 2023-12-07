@@ -2,7 +2,6 @@ import React from 'react'
 
 const BookForm = ({
   formData,
-  setFormData,
   loading,
   handleInputChange,
   handleSubmit,
