@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import BackButton from '../components/BackButton';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+import {useNavigate, useParams} from 'react-router-dom';
+import {useSnackbar} from 'notistack';
 import BookForm from '../components/BookForm';
 
 const EditBook = () => {
@@ -12,8 +12,8 @@ const EditBook = () => {
     publishYear: '',
   });
   const [loading, setLoading] = useState(false);
-  const { enqueueSnackbar } = useSnackbar();
-  const { id } = useParams();
+  const {enqueueSnackbar} = useSnackbar();
+  const {id} = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,8 +22,8 @@ const EditBook = () => {
       .get(`http://localhost:8888/books/${id}`)
       .then((response) => {
         setLoading(false);
-        const { title, author, publishYear } = response.data;
-        setFormData({ title, author, publishYear });
+        const {title, author, publishYear} = response.data;
+        setFormData({title, author, publishYear});
       })
       .catch((error) => {
         console.log(error);
@@ -32,8 +32,8 @@ const EditBook = () => {
   }, [id]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
   };
 
   const handleUpdateBook = () => {
@@ -42,18 +42,18 @@ const EditBook = () => {
       .put(`http://localhost:8888/books/${id}`, formData)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book edited successfully', { variant: 'success' });
+        enqueueSnackbar('Book edited successfully', {variant: 'success'});
         navigate('/');
       })
       .catch((error) => {
         console.log(error);
-        enqueueSnackbar('Error', { variant: 'error' });
+        enqueueSnackbar('Error', {variant: 'error'});
       });
   };
 
   return (
     <div className='p-4'>
-      <BackButton />
+      <BackButton/>
       <BookForm
         formData={formData}
         setFormData={setFormData}
